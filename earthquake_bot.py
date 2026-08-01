@@ -3,7 +3,7 @@ import time
 import json
 import os
 from datetime import datetime, timedelta
-from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Bot
 
 TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
 if not TOKEN:
@@ -19,10 +19,10 @@ CHECK_INTERVAL = 300
 
 CHAT_ID = None
 
-def send_message(text, keyboard=None):
+def send_message(text):
 if CHAT_ID:
 try:
-BOT.send_message(chat_id=CHAT_ID, text=text, parse_mode='HTML', reply_markup=keyboard)
+BOT.send_message(chat_id=CHAT_ID, text=text, parse_mode='HTML')
 except Exception as e:
 print(f"خطا در ارسال: {e}")
 
